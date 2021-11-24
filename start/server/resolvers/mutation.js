@@ -1,10 +1,12 @@
+const { v4 } = require("uuid");
 const Mutation = {
   addAnimal: (
     parent,
     { slug, image, title, rating, price, description, stock, onSale, category },
-    ctx
+    { animals }
   ) => {
     let newAnimal = {
+      id: v4(),
       slug: slug,
       image: image,
       title: title,
@@ -14,7 +16,18 @@ const Mutation = {
       onsale: onSale,
       category: category,
     };
-    console.log(title);
+    animals.push(newAnimal);
+    return newAnimal;
+  },
+
+  removeAnimal: (parent, { id }, { animals }) => {
+    let index = animals.findIndex((animal) => {
+      return animal.id == id;
+    });
+
+    animals.splice(index, 1);
+
+    return true;
   },
 };
 
