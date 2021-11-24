@@ -1,5 +1,5 @@
 const { ApolloServer } = require("apollo-server");
-const { mainCard, animals, categories } = require("./db.js");
+const { mainCards, animals, categories } = require("./db.js");
 
 const typeDefs = require("./schema.js");
 
@@ -21,7 +21,7 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   context: {
-    mainCard: mainCard,
+    mainCards: mainCards,
     animals: animals,
     categories: categories,
   },

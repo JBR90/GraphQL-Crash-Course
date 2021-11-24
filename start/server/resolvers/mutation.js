@@ -29,6 +29,32 @@ const Mutation = {
 
     return true;
   },
+
+  updateAnimal: (
+    parent,
+    {
+      id,
+      slug,
+      image,
+      title,
+      rating,
+      price,
+      description,
+      stock,
+      onSale,
+      category,
+    },
+    { animals }
+  ) => {
+    let index = animals.findIndex((animal) => {
+      return animal.id == id;
+    });
+    console.log(slug);
+    console.log(index);
+    slug ? (animals[index].slug = slug) : slug;
+    image ? (animals[index].image = image) : slug;
+    return true;
+  },
 };
 
 module.exports = Mutation;

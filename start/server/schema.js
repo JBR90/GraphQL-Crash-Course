@@ -12,7 +12,7 @@ const typeDefs = gql`
     slug: String!
     image: String!
     title: String
-    rating: Float!
+    rating: Float
     price: String!
     description: [String!]!
     stock: Int!
@@ -49,6 +49,18 @@ const typeDefs = gql`
       category: String!
     ): Animal
     removeAnimal(id: ID!): Boolean
+    updateAnimal(
+      id: ID!
+      slug: String
+      image: String
+      title: String
+      rating: Float
+      price: String
+      description: [String!]
+      stock: Int
+      onSale: Boolean
+      category: String
+    ): Boolean
   }
 `;
 
